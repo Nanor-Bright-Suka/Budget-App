@@ -104,7 +104,7 @@ function Dashboard() {
 
 							{expenses && expenses.length > 0 && (
 								<div>
-									<h2 className="text-center text-3xl hover:underline cursor-pointer mt-8">Recent Expenses</h2>
+									<h2 className="text-center text-3xl hover:underline cursor-pointer mt-20">Recent Expenses</h2>
 									<Tables expenses={expenses.sort((a, b) => a.createdAt - b.createdAt).slice(0, 8)} />
 									<div className="flex justify-center">
 										{expenses.length > 8 && (
