@@ -1,6 +1,6 @@
 //React Dependencies
 import React from "react";
-import { Link, redirect, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 //Components
 import CreateAccount from "../Components/CreateAccount";
@@ -29,7 +29,7 @@ export async function CreateAccountAction({ request }) {
 		try {
 			localStorage.setItem("username", JSON.stringify(values.username));
 			
-		} catch (error) {
+		} catch (e) {
 			throw new Error("Please there was a problem creating your account");
 		}
 	} 
@@ -41,7 +41,7 @@ export async function CreateAccountAction({ request }) {
 				name: values.budgetName,
 				amount: values.budgetAmount,
 			});
-		} catch (error) {
+		} catch (e) {
 			throw new Error("Please there was a problem creating your budget");
 		}
 	}
@@ -54,7 +54,7 @@ export async function CreateAccountAction({ request }) {
 				amount: values.expenseAmount,
 				budgetId: values.newExpenseName,
 			});
-		} catch (error) {
+		} catch (e) {
 			throw new Error("Please there was a problem creating your expense");
 		}
 	}
@@ -66,7 +66,7 @@ export async function CreateAccountAction({ request }) {
         key: "expenses",
         id: values.expenseId,
       })
-    }catch(error){
+    }catch(e){
       throw new Error("There was a problem deleting your Expenses")
     }
   }

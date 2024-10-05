@@ -1,26 +1,28 @@
 
 
 export const fetchData = (key) => {
-    return JSON.parse(localStorage.getItem(key) ?? "[]");
+    return JSON.parse(localStorage.getItem(key));
 }
 
 //Create Account 
-// export const createAccount = ({name}) => {
-//     const objItem = {
-//         username: name
-//     }
-//     return  localStorage.setItem("username", JSON.stringify(objItem))
-// }
+export const createAccount = ({name}) => {
+    const objItem = {
+        username: name
+    }
+    localStorage.setItem("username", JSON.stringify(objItem))
+    return objItem
+}
 
 
 //Delete User 
 export const DeleteItem = ({key, id}) => {
- const existingData = fetchData(key)
+ const existingData = fetchData(key) ?? []
 
  if(id){
     const newData = existingData.filter((item) => item.id !== id)
     return localStorage.setItem(key, JSON.stringify(newData))
  }localStorage.removeItem(key)
+ 
 }
 
 
@@ -32,7 +34,7 @@ export const createBudget = ({name, amount}) => {
         createdAt: Date.now(),
         amount: +amount,
     }
-     const existingData = fetchData("budgets")
+     const existingData = fetchData("budgets") ?? []
     return localStorage.setItem("budgets", JSON.stringify([...existingData, newItems]))
 }
 
@@ -48,7 +50,8 @@ export const createExpense = ({name,amount,budgetId}) => {
         budgetId: budgetId
     }
     const existingExpenses = fetchData("expenses") ?? []
-    return localStorage.setItem("expenses", JSON.stringify([...existingExpenses,newExpense]))
+     localStorage.setItem("expenses", JSON.stringify([...existingExpenses,newExpense]))
+     
 }
 
 ///Calculating Spent Budget
@@ -92,7 +95,7 @@ export const formatPercentage = (amt) => {
 
  //Get All Matching Items
  export const getAllMatchingItems = ({category, key, value}) => {
-        const data = fetchData(category)
+        const data = fetchData(category) ?? []
    return  data.filter((item)=> item[key] === value)
   
  } 

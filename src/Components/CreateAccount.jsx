@@ -19,7 +19,7 @@ function CreateAccount() {
 
   return (
     <div>
-       <div className='flex justify-center flex-col'>
+       <div className='flex justify-center flex-col mx-auto'>
       <h1 className='text-center text-4xl mt-5'>Take Control of  Your Money</h1>
         <p className=' text-black text-xl text-center mt-2
          tracking-wider max-[600px]:my-5'>Personal budgeting is the secret to financial freedom <br /> Start your journey today</p>

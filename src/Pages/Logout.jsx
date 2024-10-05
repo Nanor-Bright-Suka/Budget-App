@@ -7,6 +7,12 @@ export async function action (){
  DeleteItem({
   key: "username"
  })
+ DeleteItem({
+  key: "budgets"
+ })
+ DeleteItem({
+  key: "expenses"
+ })
         return redirect("/")
 }
 

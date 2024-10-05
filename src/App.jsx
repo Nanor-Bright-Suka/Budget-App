@@ -21,15 +21,11 @@ import { expensePageAction } from './Pages/ExpensePage'
 const router = createBrowserRouter(createRoutesFromElements(
   <Route  element={<Layout />} loader={LayoutLoader}>
     <Route path="/" element={<Dashboard />} action={CreateAccountAction} loader={UtilityLoader}/>
-    <Route path="Logout" element={<Logout />} action={LogoutAction} />  
+    <Route path="logout" element={<Logout />} action={LogoutAction} />  
     <Route path="expenses" element={<ExpensePage />} loader={ExPageLoader} action={expensePageAction}/>
-    <Route path="/budgets/:id" element={<EachBudgetPage />} loader={EachBgPgLoader} action={EachBgPgAction}> 
-    <Route path="delete" element={<DeleteBudget />} action={DeleteBudgetAction}/>
-
+    <Route path="budgets/:id" element={<EachBudgetPage />} loader={EachBgPgLoader} action={EachBgPgAction} > 
+      <Route path="delete" element={<DeleteBudget />} action={DeleteBudgetAction} />
     </Route>
-    
-
-  
   </Route>
 ))
 
